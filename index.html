@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <nav class="mode-links">
+      <a href="?mode=2d">2D version</a>
+      <a href="?mode=3d">3D version</a>
+    </nav>
+
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
-    <script src="sketch.js"></script>
+    <script>
+      const mode = new URLSearchParams(window.location.search).get("mode");
+      const sketch = document.createElement("script");
+      sketch.src = mode === "3d" ? "sketch3d.js" : "sketch.js";
+      document.body.appendChild(sketch);
+    </script>
 
     <header>
       <h1 style="text-align:right;">Random Walk</h1>

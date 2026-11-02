@@ -11,6 +11,32 @@ canvas
   display: block;
 }
 
+.mode-links
+{
+  position: fixed;
+  top: 65px;
+  right: 20px;
+  z-index: 1;
+  display: flex;
+  gap: 8px;
+}
+
+.mode-links a
+{
+  padding: 6px 10px;
+  border: 1px solid #888;
+  border-radius: 4px;
+  background: #222;
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.mode-links a:hover
+{
+  background: #444;
+}
+
 .zoom-button 
 {
   width: 32px;
