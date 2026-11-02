@@ -17,6 +17,7 @@ let start = true;
 let returnedHome = false;
 let steps = 0;
 let messageTextSize = 20;
+let gameOverMessage;
 
 function setup()
 {
@@ -24,6 +25,10 @@ function setup()
   camera(700, -500, 800, 0, 0, 0, 0, 1, 0);
   textSize(messageTextSize);
   lastSpawn = millis();
+
+  gameOverMessage = createDiv("");
+  gameOverMessage.class("game-over-message");
+  gameOverMessage.hide();
 
   zoomInButton = createButton("+");
   zoomInButton.position(20, 20);
@@ -202,13 +207,15 @@ function draw()
 
   if (returnedHome)
   {
-    push();
-    resetMatrix();
-    fill(255);
-    textAlign(CENTER, CENTER);
-    text("You returned home after " + steps + " steps.", 0, -20);
-    text("Press start over to play again.", 0, 20);
-    pop();
+    gameOverMessage.html(
+      "You returned home after " + steps + " steps.<br>" +
+      "Press start over to play again."
+    );
+    gameOverMessage.show();
+  }
+  else
+  {
+    gameOverMessage.hide();
   }
 }
 
